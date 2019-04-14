@@ -1,0 +1,14 @@
+{
+    "keenan": {
+        "awscloudformation": {
+            "AuthRoleName": "djmeserver-20190414144000-authRole",
+            "UnauthRoleArn": "arn:aws:iam::809327336756:role/djmeserver-20190414144000-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::809327336756:role/djmeserver-20190414144000-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "djmeserver-20190414144000-deployment",
+            "UnauthRoleName": "djmeserver-20190414144000-unauthRole",
+            "StackName": "djmeserver-20190414144000",
+            "StackId": "arn:aws:cloudformation:us-east-1:809327336756:stack/djmeserver-20190414144000/b458e570-5ee4-11e9-a176-12d3b8b76b62"
+        }
+    }
+}
