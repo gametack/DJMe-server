@@ -1,0 +1,27 @@
+{
+  "name": "djme-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "archiver": "^3.0.0",
+    "archiver-promise": "^1.0.0",
+    "aws-sdk": "^2.439.0",
+    "dotenv": "^7.0.0",
+    "fs": "0.0.1-security"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gametack/DJMe-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gametack/DJMe-server/issues"
+  },
+  "homepage": "https://github.com/gametack/DJMe-server#readme"
+}
