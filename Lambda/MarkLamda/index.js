@@ -6,7 +6,7 @@ console.log('Loading function');
 exports.handler = (event) => {
     
 var pg = require('pg');
-
+console.log("mark Was here");
 var conString = "postgres://Garbo:NotToken@NotURL";
 
 var client = new pg.Client(conString);

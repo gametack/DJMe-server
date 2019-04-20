@@ -4,7 +4,6 @@ require('dotenv').config();
 var fs = require('fs');
 var archiver = require('archiver-promise');
 var path = require('path')
-var archive = archiver('zip');
 
 var AWS = require('aws-sdk');
 AWS.config.update({
@@ -16,6 +15,7 @@ AWS.config.update({
 
 function ZipLambda (LambdaFunction) {
   var finishedzip = LambdaFunction + '.zip'
+  var archive = archiver(finishedzip);
   var output = fs.createWriteStream(finishedzip);
   output.on('end', function() {
     console.log('Data has been drained');
@@ -43,6 +43,7 @@ function ZipLambda (LambdaFunction) {
   archive.directory(zipPath, false);
   //archive.glob(zipPath + '\\index.js',false)
   //archive.file(zipPath)
+  console.log('Right before finalize' + LambdaFunction)
   return archive.finalize();
   console.log(archive.readable)
   return finishedzip  
@@ -95,6 +96,7 @@ function DeployLambda (LambdaFunction, ZipLoc) {
      }
      */
    });
+   fs.unlinkSync(ZipLoc)
 }
 
 
@@ -109,6 +111,9 @@ function getDirectories(path) {
 var AllDirs = getDirectories(resolvedPath)
 for(let i = 0; i < AllDirs.length; i++){
   console.log(AllDirs[i]);
+  if (AllDirs[i]=== 'TestLambda') {
+    //continue
+  }
   //var zipPromise = ZipLambda(AllDirs[i]) 
 
   async function waitzippromise(Dir) {
@@ -120,8 +125,8 @@ for(let i = 0; i < AllDirs.length; i++){
   waitzippromise(AllDirs[i])
 
   //DeployLambda(AllDirs[i],ZipLocation)
-  console.log("Should be zipped")
-  console.log("Should be Deployed")
+  //console.log("Should be zipped")
+  //console.log("Should be Deployed")
 
 }
 
