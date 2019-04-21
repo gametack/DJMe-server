@@ -37,7 +37,13 @@ function ZipLambda (LambdaFunction) {
 
   archive.pipe(output);
 
-  var origpath = __dirname + '\\..\\Lambda\\' + LambdaFunction
+  if(process.env.OS == "MacOS") {
+    var origpath = __dirname + '/../Lambda/' + LambdaFunction
+  } else if(process.env.OS == "Windows") {
+    var origpath = __dirname + '\\..\\Lambda\\' + LambdaFunction
+  } else{
+    throw "Unknown OS, please set OS in the .env file"
+  }
   var zipPath = path.resolve(origpath)
   
   archive.directory(zipPath, false);
@@ -77,7 +83,7 @@ function DeployLambda (LambdaFunction, ZipLoc) {
    lambda.updateFunctionCode(params, function(err, data) {
      if (err) console.log(err, err.stack); // an error occurred
      else     console.log(data);           // successful response
-     /*
+     /* Example successful response
      data = {
       CodeSha256: "LQT+0DHxxxxcfwLyQjzoEFKZtdqQjHXanlSdfXBlEW0VA=", 
       CodeSize: 123, 
@@ -100,7 +106,13 @@ function DeployLambda (LambdaFunction, ZipLoc) {
 }
 
 
-var srcPath = __dirname + '\\..\\Lambda'
+if(process.env.OS == "MacOS") {
+  var srcPath = __dirname + '/../Lambda'
+} else if(process.env.OS == "Windows") {
+  var srcPath = __dirname + '\\..\\Lambda'
+} else{
+  throw "Unknown OS, please set OS in the .env file"
+}
 var resolvedPath = path.resolve(srcPath)
 function getDirectories(path) {
   return fs.readdirSync(path).filter(function (file) {
@@ -114,7 +126,6 @@ for(let i = 0; i < AllDirs.length; i++){
   if (AllDirs[i]=== 'TestLambda') {
     //continue
   }
-  //var zipPromise = ZipLambda(AllDirs[i]) 
 
   async function waitzippromise(Dir) {
   var ZipLocation = await ZipLambda(Dir)
@@ -123,11 +134,6 @@ for(let i = 0; i < AllDirs.length; i++){
     console.log("I think I am done");
   }
   waitzippromise(AllDirs[i])
-
-  //DeployLambda(AllDirs[i],ZipLocation)
-  //console.log("Should be zipped")
-  //console.log("Should be Deployed")
-
 }
 
 return
@@ -156,7 +162,3 @@ archive.directory('Tester/', false);
 archive.finalize();
 
 console.log("end")
-
-// console.log("Hello World");
-// console.log(__filename);
-// console.log(process.env);
