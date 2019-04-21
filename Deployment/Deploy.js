@@ -7,9 +7,9 @@ var path = require('path')
 
 var AWS = require('aws-sdk');
 AWS.config.update({
-  region:'us-east-1',
-  //accessKeyId: process.env.AWS_ACCESS_KEY_ID
-  //secretAccessKey: process.env.
+  region:process.env.AWS_DEFAULT_REGION,
+//   //accessKeyId: process.env.AWS_ACCESS_KEY_ID
+//   //secretAccessKey: process.env.
 });
 
 
@@ -37,13 +37,7 @@ function ZipLambda (LambdaFunction) {
 
   archive.pipe(output);
 
-  if(process.env.OS == "MacOS") {
-    var origpath = __dirname + '/../Lambda/' + LambdaFunction
-  } else if(process.env.OS == "Windows") {
-    var origpath = __dirname + '\\..\\Lambda\\' + LambdaFunction
-  } else{
-    throw "Unknown OS, please set OS in the .env file"
-  }
+  var origpath = __dirname + '/../Lambda/' + LambdaFunction
   var zipPath = path.resolve(origpath)
   
   archive.directory(zipPath, false);
@@ -105,14 +99,7 @@ function DeployLambda (LambdaFunction, ZipLoc) {
    fs.unlinkSync(ZipLoc)
 }
 
-
-if(process.env.OS == "MacOS") {
-  var srcPath = __dirname + '/../Lambda'
-} else if(process.env.OS == "Windows") {
-  var srcPath = __dirname + '\\..\\Lambda'
-} else{
-  throw "Unknown OS, please set OS in the .env file"
-}
+var srcPath = __dirname + '/../Lambda'
 var resolvedPath = path.resolve(srcPath)
 function getDirectories(path) {
   return fs.readdirSync(path).filter(function (file) {
