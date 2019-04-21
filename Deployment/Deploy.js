@@ -110,10 +110,6 @@ function getDirectories(path) {
 var AllDirs = getDirectories(resolvedPath)
 for(let i = 0; i < AllDirs.length; i++){
   console.log(AllDirs[i]);
-  if (AllDirs[i]=== 'TestLambda') {
-    //continue
-  }
-
   async function waitzippromise(Dir) {
   var ZipLocation = await ZipLambda(Dir)
     ZipLocation = Dir + '.zip'
