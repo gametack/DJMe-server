@@ -5,7 +5,7 @@ const fs = require('fs');
 const archiver = require('archiver-promise');
 const path = require('path')
 
-var AWS = require('aws-sdk');
+let AWS = require('aws-sdk');
 AWS.config.update({
   region:process.env.AWS_DEFAULT_REGION,
 //   //accessKeyId: process.env.AWS_ACCESS_KEY_ID
@@ -14,9 +14,9 @@ AWS.config.update({
 
 
 function ZipLambda (LambdaFunction) {
-  var finishedzip = LambdaFunction + '.zip'
-  var archive = archiver(finishedzip);
-  var output = fs.createWriteStream(finishedzip);
+  let finishedzip = LambdaFunction + '.zip'
+  let archive = archiver(finishedzip);
+  let output = fs.createWriteStream(finishedzip);
   output.on('end', function() {
     console.log('Data has been drained');
   });
@@ -37,8 +37,8 @@ function ZipLambda (LambdaFunction) {
 
   archive.pipe(output);
 
-  var origpath = __dirname + '/../Lambda/' + LambdaFunction
-  var zipPath = path.resolve(origpath)
+  let origpath = __dirname + '/../Lambda/' + LambdaFunction
+  let zipPath = path.resolve(origpath)
   
   archive.directory(zipPath, false);
   //archive.glob(zipPath + '\\index.js',false)
@@ -50,13 +50,13 @@ function ZipLambda (LambdaFunction) {
 }
 
 function DeployLambda (LambdaFunction, ZipLoc) {
-  var lambda = new AWS.Lambda();
+  let lambda = new AWS.Lambda();
   fs.chmod(ZipLoc, 0777, function (err) {
     if (err) { throw err; }
     // done
   })
-  var x = fs.readFileSync(ZipLoc)
-  var params = {
+  let x = fs.readFileSync(ZipLoc)
+  let params = {
     FunctionName: 'TestLambda', /* required */
     //Qualifier: 'STRING_VALUE'
   };
@@ -65,7 +65,7 @@ function DeployLambda (LambdaFunction, ZipLoc) {
     else     console.log(data);           // successful response
   });
 
-  var params = {
+  let params = {
     FunctionName: LambdaFunction, 
     //DryRun: true, 
     Publish: true, 
@@ -99,19 +99,19 @@ function DeployLambda (LambdaFunction, ZipLoc) {
    fs.unlinkSync(ZipLoc)
 }
 
-var srcPath = __dirname + '/../Lambda'
-var resolvedPath = path.resolve(srcPath)
+let srcPath = __dirname + '/../Lambda'
+let resolvedPath = path.resolve(srcPath)
 function getDirectories(path) {
   return fs.readdirSync(path).filter(function (file) {
     return fs.statSync(path+'/'+file).isDirectory();
   });
 }
 
-var AllDirs = getDirectories(resolvedPath)
+let AllDirs = getDirectories(resolvedPath)
 for(let i = 0; i < AllDirs.length; i++){
   console.log(AllDirs[i]);
   async function waitzippromise(Dir) {
-  var ZipLocation = await ZipLambda(Dir)
+  let ZipLocation = await ZipLambda(Dir)
     ZipLocation = Dir + '.zip'
     DeployLambda(Dir,ZipLocation)
     console.log("I think I am done");
