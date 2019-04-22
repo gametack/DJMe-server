@@ -1,9 +1,9 @@
 require('dotenv').config();
 
 
-var fs = require('fs');
-var archiver = require('archiver-promise');
-var path = require('path')
+const fs = require('fs');
+const archiver = require('archiver-promise');
+const path = require('path')
 
 var AWS = require('aws-sdk');
 AWS.config.update({
