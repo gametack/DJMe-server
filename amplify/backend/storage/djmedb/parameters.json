@@ -1,5 +1,0 @@
-{
-    "tableName": "party",
-    "partitionKeyName": "id",
-    "partitionKeyType": "N"
-}
