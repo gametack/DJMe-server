@@ -1,0 +1,48 @@
+{
+    "paths": [
+        {
+            "name": "/Rooms",
+            "lambdaFunction": "Rooms",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ],
+                "unauth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            }
+        }
+    ],
+    "resourceName": "DJMe",
+    "apiName": "DJMe",
+    "functionArns": [
+        {
+            "lambdaFunction": "Rooms"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "djme-20190424205917-authRole",
+        "unAuthRoleName": "djme-20190424205917-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "Rooms",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
