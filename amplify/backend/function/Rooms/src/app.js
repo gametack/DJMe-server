@@ -55,16 +55,22 @@ const convertUrlType = (param, type) => {
  * HTTP Get method for list objects *
  ********************************/
 
-app.get(path + hashKeyPath, function(req, res) {
+// app.get(path + hashKeyPath, function(req, res) {
+app.get(path, function(req, res) {
+  console.log('entering get');
   var condition = {}
   condition[partitionKeyName] = {
     ComparisonOperator: 'EQ'
   }
   
   if (userIdPresent && req.apiGateway) {
+    console.log('Hello if');
+    res.json({klondike: 'bar1'});
     condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
   } else {
     try {
+      console.log('Hello else');
+      res.json({klondike: 'bar2'});
       condition[partitionKeyName]['AttributeValueList'] = [ convertUrlType(req.params[partitionKeyName], partitionKeyType) ];
     } catch(err) {
       res.statusCode = 500;

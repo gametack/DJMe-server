@@ -1,21 +1,21 @@
 {
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "djme-20190424205917-authRole",
-            "UnauthRoleArn": "arn:aws:iam::809327336756:role/djme-20190424205917-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::809327336756:role/djme-20190424205917-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "djme-20190424205917-deployment",
-            "UnauthRoleName": "djme-20190424205917-unauthRole",
-            "StackName": "djme-20190424205917",
-            "StackId": "arn:aws:cloudformation:us-east-1:809327336756:stack/djme-20190424205917/5a1e59f0-66f5-11e9-9daa-1251e602a9c6"
-        },
-        "categories": {
-            "auth": {
-                "cognito170d7462": {
-                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"ChangeMeLaterManny\",\"client_secret\":\"ChangeMeLaterManny\"},{\"ProviderName\":\"Google\",\"client_id\":\"ChangeMeLaterManny\",\"client_secret\":\"ChangeMeLaterMark\"}]"
-                }
-            }
-        }
-    }
+	"dev": {
+		"awscloudformation": {
+			"AuthRoleName": "djme-20190424205917-authRole",
+			"UnauthRoleArn": "arn:aws:iam::809327336756:role/djme-20190424205917-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::809327336756:role/djme-20190424205917-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "djme-20190424205917-deployment",
+			"UnauthRoleName": "djme-20190424205917-unauthRole",
+			"StackName": "djme-20190424205917",
+			"StackId": "arn:aws:cloudformation:us-east-1:809327336756:stack/djme-20190424205917/5a1e59f0-66f5-11e9-9daa-1251e602a9c6"
+		},
+		"categories": {
+			"auth": {
+				"cognito170d7462": {
+					"hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"ChangeMeLaterManny\",\"client_secret\":\"ChangeMeLaterManny\"},{\"ProviderName\":\"Google\",\"client_id\":\"ChangeMeLaterManny\",\"client_secret\":\"ChangeMeLaterMark\"}]"
+				}
+			}
+		}
+	}
 }
