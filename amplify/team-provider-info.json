@@ -1,0 +1,40 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "djme-20190424205917-authRole",
+            "UnauthRoleArn": "arn:aws:iam::809327336756:role/djme-20190424205917-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::809327336756:role/djme-20190424205917-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "djme-20190424205917-deployment",
+            "UnauthRoleName": "djme-20190424205917-unauthRole",
+            "StackName": "djme-20190424205917",
+            "StackId": "arn:aws:cloudformation:us-east-1:809327336756:stack/djme-20190424205917/5a1e59f0-66f5-11e9-9daa-1251e602a9c6"
+        },
+        "categories": {
+            "auth": {
+                "cognito170d7462": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"ChangeMeLaterManny\",\"client_secret\":\"ChangeMeLaterManny\"},{\"ProviderName\":\"Google\",\"client_id\":\"ChangeMeLaterManny\",\"client_secret\":\"ChangeMeLaterMark\"}]"
+                }
+            }
+        }
+    },
+    "mark": {
+        "awscloudformation": {
+            "AuthRoleName": "djme-mark-20190430183031-authRole",
+            "UnauthRoleArn": "arn:aws:iam::809327336756:role/djme-mark-20190430183031-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::809327336756:role/djme-mark-20190430183031-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "djme-mark-20190430183031-deployment",
+            "UnauthRoleName": "djme-mark-20190430183031-unauthRole",
+            "StackName": "djme-mark-20190430183031",
+            "StackId": "arn:aws:cloudformation:us-east-1:809327336756:stack/djme-mark-20190430183031/8ed29570-6b97-11e9-8683-0ad7f2019cc4"
+        },
+        "categories": {
+            "auth": {
+                "cognito170d7462": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"none\",\"client_secret\":\"none\"},{\"ProviderName\":\"Google\",\"client_id\":\"none\",\"client_secret\":\"none\"}]"
+                }
+            }
+        }
+    }
+}
