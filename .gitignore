@@ -16,3 +16,6 @@ dist/
 node_modules/
 aws-exports.js
 awsconfiguration.json
+
+#Mark Android studio things
+.idea
