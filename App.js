@@ -29,7 +29,7 @@ class App extends React.Component {
   render() {
     return (
       //TODO: Replace Text with image for logo
-      <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center', backgroundColor:'#303030'}}>
+      <View style={styles.container}>
       <ThemeProvider theme={theme}>
         <Text h1Style={{color: 'red', fontSize: 100}} h1>DJME</Text>
         <Button containerStyle={{marginTop: 100}} title="JOIN" />
@@ -39,5 +39,15 @@ class App extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    position: 'absolute',
+    backgroundColor: '#303030',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default withAuthenticator(App);
