@@ -6,8 +6,8 @@ import awsConfig from "./aws-exports";
 import { ThemeProvider, Button, Text } from 'react-native-elements';
 import { NativeRouter, Switch, Route } from "react-router-native";
 import Home from "./components/home";
-import JoinRoom from "./components/join-room";
-import CreateRoom from "./components/create-room";
+import JoinRoom from './components/join-room'
+import CreateRoom from './components/create-room'
 
 
 Amplify.configure(awsConfig);

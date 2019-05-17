@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ThemeProvider, Button, Text } from 'react-native-elements';
 
+// TODO: Extract this theme into a seperate .js file and export it and then use it everywhere
 const theme = {
     colors: {
       primary: '#92CBC5',
