@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Text, Button, FormLabel, FormInput, FormValidationMessage } from "react-native-elements"
+import { TextInput } from 'react-native-paper';
+
 
 const styles = StyleSheet.create({
     container: {
