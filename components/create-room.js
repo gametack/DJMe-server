@@ -1,9 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Provider as PaperProvider, Button,  Text, Divider, TextInput } from 'react-native-paper';
+import { Provider as PaperProvider, Button,  Text, TextInput } from 'react-native-paper';
 import {styles, theme} from './global-styles'
 
 
+// TODO: Learn how History will be passed to this component for Routing
   export default class CreateRoom extends React.Component {
     constructor(props) {
         super(props);
@@ -19,7 +20,7 @@ import {styles, theme} from './global-styles'
         console.log("My Room Code is " + this.state.RoomCode)
     }
     render() {
-        // TODO: Figure out why react-native-elements form component items do not work
+        // TODO: Refactor Text Styles out to seperate File
         return (
             <PaperProvider theme={theme}>
                 <View style={styles.container}>

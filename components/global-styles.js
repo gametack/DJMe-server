@@ -1,10 +1,10 @@
-
 import { StyleSheet } from 'react-native';
 import { DarkTheme } from 'react-native-paper';
 
     export const theme = {
     ...DarkTheme,
       roundness: 5,
+      // TODO: Colors seem to take a lot of guess and checks Review with team
       colors: {
         primary: '#92CBC5', // Color of active objects and background of buttons
         accent: '#303030',
@@ -15,18 +15,6 @@ import { DarkTheme } from 'react-native-paper';
         placeholder: '#ffffff', //Label for Text Inputs
         backdrop : '#303030'
       }
-      
-      // Button: {
-      //   raised: true,
-      //   titleStyle: {
-      //     color:'#000000',
-      //     fontSize: 30
-      //   },
-      //   containerStyle: {
-      //     width: '50%',
-      //     marginTop: 20
-      //   }
-      // },
     };
 
     export const styles = StyleSheet.create({

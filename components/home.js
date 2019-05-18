@@ -5,7 +5,8 @@ import {styles, theme} from './global-styles'
 
 
 export default ({ history }) => (
- //TODO: Replace Text with image for logo
+        //TODO: Replace Text with image for logo
+        // TODO: Refactor Text Styles out to seperate File
         <PaperProvider theme={theme}>
           <View style={styles.container}>
             <Text style={{color: 'red', fontSize: 100}}>DJME</Text>
@@ -19,6 +20,3 @@ export default ({ history }) => (
           </View>
         </PaperProvider>
 );
-
-//<Button containerStyle={{marginTop: 100}} title="JOIN" onPress={() => history.push('/joinRoom')} />
-//<Button containerStyle={{width: '35%'}}title="CREATE" onPress={() => history.push('/createRoom')}/>
