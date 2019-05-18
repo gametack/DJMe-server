@@ -1,10 +1,17 @@
 import React from "react"
 import { StyleSheet, View } from 'react-native';
-import { Text, Button } from "react-native-elements"
+import { Provider as PaperProvider, Button,  Text, Divider } from 'react-native-paper';
+import {styles, theme} from './global-styles'
+
 
 export default ({ history }) => (
-    <View>
-        <Text h1Style={{color: 'red', fontSize: 100}} h1>JOIN FORM</Text>
-        <Button containerStyle={{marginTop: 100}} title="GO BACK" onPress={() => history.push("/")} />
-    </View>
+    <PaperProvider theme={theme}>
+        <View style={styles.container}>
+            <Text style={{color: 'red', fontSize: 30}}>TO BE DEVELOPED</Text>
+            <Divider style={{marginTop: 100}} />
+            <Button style={{width: '50%'}}  mode="contained" onPress={() => history.push('/')}>
+                <Text style={{ fontSize: 24, color:'#000000' }}>HOME</Text>
+            </Button>
+        </View>
+    </PaperProvider>
 );

@@ -1,42 +1,24 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { ThemeProvider, Button, Text } from 'react-native-elements';
+import { View } from 'react-native';
+import { Provider as PaperProvider, Button,  Text, Divider } from 'react-native-paper';
+import {styles, theme} from './global-styles'
 
-// TODO: Extract this theme into a seperate .js file and export it and then use it everywhere
-const theme = {
-    colors: {
-      primary: '#92CBC5',
-      secondary: '#000000'
-    },
-    Button: {
-      raised: true,
-      titleStyle: {
-        color:'#000000',
-        fontSize: 30
-      },
-      containerStyle: {
-        width: '50%',
-        marginTop: 20
-      }
-    },
-  };
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      // position: 'absolute',
-      backgroundColor: '#303030',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
 export default ({ history }) => (
  //TODO: Replace Text with image for logo
-    <View style={styles.container}>
-        <ThemeProvider theme={theme}>
-            <Text h1Style={{color: 'red', fontSize: 100}} h1>DJME</Text>
-            <Button containerStyle={{marginTop: 100}} title="JOIN" onPress={() => history.push('/joinRoom')} />
-            <Button containerStyle={{width: '35%'}}title="CREATE" onPress={() => history.push('/createRoom')}/>
-        </ThemeProvider>
-    </View>
+        <PaperProvider theme={theme}>
+          <View style={styles.container}>
+            <Text style={{color: 'red', fontSize: 100}}>DJME</Text>
+            <Divider style={{marginTop: 100}} />
+            <Button style={{width: '50%'}}  mode="contained" onPress={() => history.push('/joinRoom')}>
+              <Text style={{ fontSize: 24, color:'#000000' }}>JOIN</Text>
+            </Button>
+            <Button style={{marginTop: 20, width: '35%'}} mode="contained" onPress={() => history.push('/createRoom')}>
+              <Text style={{ fontSize: 24, color:'#000000' }}>CREATE</Text>
+            </Button>
+          </View>
+        </PaperProvider>
 );
+
+//<Button containerStyle={{marginTop: 100}} title="JOIN" onPress={() => history.push('/joinRoom')} />
+//<Button containerStyle={{width: '35%'}}title="CREATE" onPress={() => history.push('/createRoom')}/>

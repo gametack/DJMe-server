@@ -1,40 +1,40 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Text, Button, FormLabel, FormInput, FormValidationMessage } from "react-native-elements"
-import { TextInput } from 'react-native-paper';
+import { View } from 'react-native';
+import { Provider as PaperProvider, Button,  Text, Divider, TextInput } from 'react-native-paper';
+import {styles, theme} from './global-styles'
 
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      // position: 'absolute',
-      backgroundColor: '#303030',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
 
   export default class CreateRoom extends React.Component {
     constructor(props) {
         super(props);
         this.state = {  
-            userInput: 'sdfsdf',
+            Name: "RoomName",
+            RoomCode: "RoomCode"
         }
+    }
+
+    PutRoom(){
+        console.log("I AM GOING TO DO AN API REQUEST")
+        console.log("My Room Name is " + this.state.Name)
+        console.log("My Room Code is " + this.state.RoomCode)
     }
     render() {
         // TODO: Figure out why react-native-elements form component items do not work
         return (
-            <View style={styles.container}>
-                <Text h1Style={{color: 'red', fontSize: 100}} h1>{this.state.userInput}</Text>
-                {/* <FormLabel>Name</FormLabel> */}
-                {/* <FormInput onChangeText={this.someFunction}/>
-                <FormValidationMessage>Error message</FormValidationMessage> */}
-                <TextInput
-                    style={{height: 40, width: 200, borderColor: 'gray', borderWidth: 1, backgroundColor: 'white'}}
-                    onChangeText={(text) => this.setState({userInput: text})}
-                    value={this.state.userInput}
-                />
-            </View>
+            <PaperProvider theme={theme}>
+                <View style={styles.container}>
+                    <TextInput
+                        style={{width: '100%', borderWidth: 1}}
+                        label='Room Name'
+                        mode='flat'
+                        onChangeText={(text) => this.setState({Name: text})}
+                        value={this.state.Name}
+                    />
+                    <Button style={{marginTop: 20, width: '35%'}} mode="contained" onPress={this.PutRoom.bind(this)}>
+                        <Text style={{ fontSize: 24, color:'#000000' }}>CREATE</Text>
+                    </Button>
+                </View>
+            </PaperProvider>
         );
     }
 }

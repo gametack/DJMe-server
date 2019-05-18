@@ -3,7 +3,6 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { withAuthenticator } from 'aws-amplify-react-native';
 import awsConfig from "./aws-exports";
-import { ThemeProvider, Button, Text } from 'react-native-elements';
 import { NativeRouter, Switch, Route } from "react-router-native";
 import Home from "./components/home";
 import JoinRoom from './components/join-room'
@@ -27,3 +26,4 @@ class App extends React.Component {
 }
 
 export default App;
+// export default withAuthenticator(App);
