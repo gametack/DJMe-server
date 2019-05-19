@@ -4,7 +4,6 @@ import { Provider as PaperProvider, Button,  Text, TextInput } from 'react-nativ
 import {styles, theme} from './global-styles'
 
 
-// TODO: Learn how History will be passed to this component for Routing
   export default class CreateRoom extends React.Component {
     constructor(props) {
         super(props);
