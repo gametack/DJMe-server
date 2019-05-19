@@ -14,7 +14,7 @@ import {styles, theme} from './global-styles'
         }
     }
 
-    PutRoom(){
+    putRoom = () => {
         console.log("I AM GOING TO DO AN API REQUEST")
         console.log("My Room Name is " + this.state.Name)
         console.log("My Room Code is " + this.state.RoomCode)
@@ -31,8 +31,12 @@ import {styles, theme} from './global-styles'
                         onChangeText={(text) => this.setState({Name: text})}
                         value={this.state.Name}
                     />
-                    <Button style={{marginTop: 20, width: '35%'}} mode="contained" onPress={this.PutRoom.bind(this)}>
+                    <Button style={{marginTop: 20, width: '35%'}} mode="contained" onPress={this.putRoom.bind(this)}>
                         <Text style={{ fontSize: 24, color:'#000000' }}>CREATE</Text>
+                    </Button>
+                    {/* TODO: Remove the back button this is only for development */}
+                    <Button style={{marginTop: 20, width: '35%'}} mode="contained" onPress={() => this.props.history.push('/')}>
+                        <Text style={{ fontSize: 24, color:'#000000' }}>Back</Text>
                     </Button>
                 </View>
             </PaperProvider>
