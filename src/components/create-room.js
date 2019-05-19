@@ -8,7 +8,7 @@ import { observer } from "mobx-react";
     constructor(props) {
         super(props);
         this.state = {
-            id: Math.floor(Math.random() * Math.floor(1000)),
+            id: Math.floor(Math.random() * 200),
             name: '',
 
         }

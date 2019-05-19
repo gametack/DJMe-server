@@ -16,7 +16,6 @@ const DataState = new DataStore()
 
 @observer class App extends React.Component {
     render() {
-        console.log('From the app::::: ', DataState.rooms[0].name)
         return (
             <NativeRouter>
                 <Switch>
