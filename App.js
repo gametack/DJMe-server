@@ -16,6 +16,7 @@ const DataState = new DataStore()
 
 @observer class App extends React.Component {
     render() {
+        console.log('From the app::::: ', DataState.rooms[0].name)
         return (
             <NativeRouter>
                 <Switch>
@@ -27,12 +28,12 @@ const DataState = new DataStore()
                     <Route
                         exact
                         path="/joinRoom"
-                        render={(props) => <JoinRoom {...props} DataState={DataState} />}
+                        render={(props) => <JoinRoom {...props} currentRooms={DataState.rooms} />}
                     />
                     <Route
                         exact
                         path="/createRoom"
-                        render={(props) => <CreateRoom {...props} DataState={DataState} />}
+                        render={(props) => <CreateRoom {...props} currentRooms={DataState.rooms} addRoom={DataState.addRoom} />}
                     />
                 </Switch>
             </NativeRouter>

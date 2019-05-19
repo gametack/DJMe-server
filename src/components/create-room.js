@@ -19,16 +19,16 @@ import { observer } from "mobx-react";
             id: this.state.id,
             name: this.state.name,
         }
-        this.props.DataState.addRoom(newRoom)
+        this.props.addRoom(newRoom)
         this.setState({ name: '' })
     }
     render() {
-        // TODO: Refactor Text Styles out to seperate File
+        // TODO: Refactor Text Styles out to separate File
         return (
             <PaperProvider theme={theme}>
                 <View style={styles.container}>
                     {/* Adding temp code for testing the store */}
-                    {this.props.DataState.rooms.map((room, index) => {
+                    {this.props.currentRooms.length && this.props.currentRooms.map((room, index) => {
                         return (
                             <Text key={index} style={{ fontSize: 24, color: '#000000' }}>Room Name: {room.name}</Text>
                         )
@@ -40,12 +40,12 @@ import { observer } from "mobx-react";
                         onChangeText={(text) => this.setState({ name: text })}
                         value={this.state.name}
                     />
-                    <Button style={{ marginTop: 20, width: '35%' }} mode="contained" onPress={this.putRoom}>
+                    <Button style={{ marginTop: 20, width: '45%' }} mode="contained" onPress={this.putRoom}>
                         <Text style={{ fontSize: 24, color: '#000000' }}>CREATE</Text>
                     </Button>
                     {/* TODO: Remove the back button this is only for development */}
-                    <Button style={{ marginTop: 20, width: '35%' }} mode="contained" onPress={() => this.props.history.push('/')}>
-                        <Text style={{ fontSize: 24, color: '#000000' }}>Back</Text>
+                    <Button style={{ marginTop: 20, width: '45%' }} mode="contained" onPress={() => this.props.history.push('/')}>
+                        <Text style={{ fontSize: 24, color: '#000000' }}>BACK</Text>
                     </Button>
                 </View>
             </PaperProvider>

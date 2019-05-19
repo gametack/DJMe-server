@@ -14,7 +14,7 @@ export default ({ history }) => (
       <Button style={{ width: '50%' }} mode="contained" onPress={() => history.push('/joinRoom')}>
         <Text style={{ fontSize: 24, color: '#000000' }}>JOIN</Text>
       </Button>
-      <Button style={{ marginTop: 20, width: '35%' }} mode="contained" onPress={() => history.push('/createRoom')}>
+      <Button style={{ marginTop: 20, width: '50%' }} mode="contained" onPress={() => history.push('/createRoom')}>
         <Text style={{ fontSize: 24, color: '#000000' }}>CREATE</Text>
       </Button>
     </View>
