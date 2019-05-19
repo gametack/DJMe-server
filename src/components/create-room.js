@@ -28,9 +28,9 @@ import { observer } from "mobx-react";
             <PaperProvider theme={theme}>
                 <View style={styles.container}>
                     {/* Adding temp code for testing the store */}
-                    {this.props.DataState.rooms.map(room => {
+                    {this.props.DataState.rooms.map((room, index) => {
                         return (
-                            <Text key={room.id} style={{ fontSize: 24, color: '#000000' }}>Room Name: {room.name}</Text>
+                            <Text key={index} style={{ fontSize: 24, color: '#000000' }}>Room Name: {room.name}</Text>
                         )
                     })}
                     <TextInput
