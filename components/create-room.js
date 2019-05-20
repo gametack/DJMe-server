@@ -30,7 +30,7 @@ import {styles, theme} from './global-styles'
                         onChangeText={(text) => this.setState({Name: text})}
                         value={this.state.Name}
                     />
-                    <Button style={{marginTop: 20, width: '35%'}} mode="contained" onPress={this.putRoom.bind(this)}>
+                    <Button style={{marginTop: 20, width: '35%'}} mode="contained" onPress={this.putRoom}>
                         <Text style={{ fontSize: 24, color:'#000000' }}>CREATE</Text>
                     </Button>
                     {/* TODO: Remove the back button this is only for development */}
