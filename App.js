@@ -22,7 +22,7 @@ const DataState = new DataStore()
                     <Route
                         exact
                         path="/"
-                        render={(props) => <Home {...props} DataState={DataState} />}
+                        render={(props) => <Home {...props} />}
                     />
                     <Route
                         exact
