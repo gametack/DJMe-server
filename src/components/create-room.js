@@ -8,17 +8,16 @@ import { observer } from "mobx-react";
     constructor(props) {
         super(props);
         this.state = {
-            id: Math.floor(Math.random() * 200),
             name: '',
-
         }
     }
 
     putRoom = () => {
         let newRoom = {
-            id: this.state.id,
+            id: Math.floor(Math.random() * 200),
             name: this.state.name,
         }
+
         this.props.addRoom(newRoom)
         this.setState({ name: '' })
     }
