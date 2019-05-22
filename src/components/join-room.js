@@ -5,7 +5,7 @@ import { styles, theme } from '../../global-styles'
 import { Link } from "react-router-native";
 
 export default ({ history, currentRooms }) => (
-    // TODO: Refactor Text Styles out to seperate File
+    // TODO: Refactor Text Styles out to separate File
     <PaperProvider theme={theme}>
         <View style={styles.container}>
             <Link to="/" underlayColor="#f0f4f7" >

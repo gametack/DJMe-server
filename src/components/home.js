@@ -6,7 +6,7 @@ import { styles, theme } from '../../global-styles'
 
 export default ({ history }) => (
   //TODO: Replace Text with image for logo
-  // TODO: Refactor Text Styles out to seperate File
+  // TODO: Refactor Text Styles out to separate File
   <PaperProvider theme={theme}>
     <View style={styles.container}>
       <Text style={{ color: 'red', fontSize: 100 }}>DJME</Text>
