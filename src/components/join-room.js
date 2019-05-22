@@ -1,7 +1,7 @@
 import React from "react"
 import { View } from 'react-native';
 import { Provider as PaperProvider, Button, Text, Divider } from 'react-native-paper';
-import { styles, theme } from './global-styles'
+import { styles, theme } from '../../global-styles'
 import { Link } from "react-router-native";
 
 export default ({ history, currentRooms }) => (
