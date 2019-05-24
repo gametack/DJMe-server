@@ -20,3 +20,6 @@ awsconfiguration.json
 
 #Mark Android studio things
 .idea
+.vscode/.react/AppEntry.bundle
+.vscode/.react/AppEntry.map
+.vscode/.react/debuggerWorker.js
