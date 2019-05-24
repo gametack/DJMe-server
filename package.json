@@ -10,6 +10,8 @@
     "aws-amplify": "^1.1.26",
     "aws-amplify-react-native": "^2.1.10",
     "expo": "^32.0.0",
+    "mobx": "^5.9.4",
+    "mobx-react": "^5.4.4",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-paper": "^2.15.2",
