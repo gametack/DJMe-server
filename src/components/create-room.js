@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { Provider as PaperProvider, Button, Text, TextInput } from 'react-native-paper';
 import { styles, theme } from '../../global-styles'
 import { observer } from "mobx-react";
+import { API } from 'aws-amplify-react-native';
 
 @observer export default class CreateRoom extends React.Component {
     constructor(props) {
@@ -12,15 +13,38 @@ import { observer } from "mobx-react";
         }
     }
 
-    putRoom = () => {
+
+    putRoom = async () => {
+        // let newRoom = {
+        //     id: Math.floor(Math.random() * 200),
+        //     name: this.state.name,
+        // }
+
         let newRoom = {
-            id: Math.floor(Math.random() * 200),
-            name: this.state.name,
+            body: {
+              "id" : 18,
+              "owner" : "Me",
+              "garbage": "I am not Garbo because I have confidence in myself"
+            }
+        }
+  
+        const path = "/Rooms";
+
+        try {
+            const apiResponse = await API.put(path, newRoom);
+            console.log("response from saving note: " + apiResponse);
+            // this.setState({apiResponse});
+            // this.props.addRoom(apiResponse);
+        } catch (e) {
+            console.log(e);
         }
 
-        this.props.addRoom(newRoom)
-        this.setState({ name: '' })
+        // this.props.addRoom(newRoom)
+        // this.setState({ name: '' })
     }
+
+
+    // Mark Trying something 
     render() {
         // TODO: Refactor Text Styles out to separate File
         return (
