@@ -1,7 +1,7 @@
 import { observable, action, computed } from 'mobx'
 
 
-export default class dataStore {
+export default class DataStore {
     constructor() {
         console.log('Data store has been initialized')
     }
