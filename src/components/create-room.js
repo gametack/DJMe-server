@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Provider as PaperProvider, Button, Text, TextInput } from 'react-native-paper';
 import { styles, theme } from '../../global-styles'
 import { observer } from "mobx-react";
-import { API } from 'aws-amplify-react-native';
+import { API } from 'aws-amplify';
 
 @observer export default class CreateRoom extends React.Component {
     constructor(props) {
@@ -31,7 +31,7 @@ import { API } from 'aws-amplify-react-native';
         const path = "/Rooms";
 
         try {
-            const apiResponse = await API.put(path, newRoom);
+            const apiResponse = await API.put("DJMe", path, newRoom);
             console.log("response from saving note: " + apiResponse);
             // this.setState({apiResponse});
             // this.props.addRoom(apiResponse);

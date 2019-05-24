@@ -160,6 +160,8 @@ app.put(path, function(req, res) {
       res.statusCode = 500;
       res.json({error: err, url: req.url, body: req.body});
     } else{
+      res.statusCode = 200;
+      data = req.body;
       res.json({success: 'put call succeed!', url: req.url, data: data})
     }
   });
