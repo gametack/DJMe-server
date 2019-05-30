@@ -74,7 +74,8 @@ android {
     abortOnError false
   }
   packagingOptions {
-    pickFirst "**"
+    pickFirst 'lib/armeabi-v7a/libgnustl_shared.so'
+    pickFirst 'lib/x86/libgnustl_shared.so'
   }
   configurations.all {
     resolutionStrategy.force 'com.android.support:design:27.1.0'
@@ -104,6 +105,9 @@ apply from: 'expo.gradle'
 // WHEN_PREPARING_SHELL_REMOVE_TO_HERE
 
 dependencies {
+  implementation project(':react-native-vector-icons')
+  implementation project(':rn-spotify-sdk')
+  implementation project(':react-native-events')  
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
   implementation 'com.android.support:multidex:1.0.1'
