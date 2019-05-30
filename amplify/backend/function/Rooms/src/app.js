@@ -6,6 +6,7 @@ or in the "license" file accompanying this file. This file is distributed on an 
 See the License for the specific language governing permissions and limitations under the License.
 */
 const AWS = require('aws-sdk')
+const uuidv4 = require('uuid/v4'); //v4 of the UUID spec generates a UUID randomly (can't be reversed + unique)
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 var bodyParser = require('body-parser')
 var express = require('express')
@@ -148,8 +149,8 @@ app.put(path, function(req, res) {
   if (userIdPresent) {
     req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
   }
-  console.log("Hello Put")
-  console.log(req)
+
+  req.body.id = uuidv4();
 
   let putItemParams = {
     TableName: tableName,
