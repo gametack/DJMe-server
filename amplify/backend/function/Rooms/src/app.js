@@ -150,7 +150,7 @@ app.put(path, function(req, res) {
     req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
   }
 
-  req.body.id = uuidv4();
+  // req.body.id = uuidv4();
 
   let putItemParams = {
     TableName: tableName,

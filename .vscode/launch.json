@@ -19,6 +19,20 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceFolder}\\src\\components\\create-room.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch my Lambda",
+            "program": "${env:APPDATA}/npm/node_modules/@aws-amplify/cli/bin/amplify",
+            "args": [
+            "function",
+            "invoke",
+            // replace this with the name of your function
+            // the folder in amplify/backend/function/
+            "Rooms"
+            ],
+            "console": "integratedTerminal" 
         }
     ]
 }
