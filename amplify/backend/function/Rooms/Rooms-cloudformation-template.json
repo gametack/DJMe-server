@@ -68,7 +68,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "djme-george-20190525191406-deployment",
-					"S3Key": "amplify-builds/Rooms-1558826796-latest-build.zip"
+					"S3Key": "amplify-builds/Rooms-1559098088-latest-build.zip"
 				}
 			}
 		},
