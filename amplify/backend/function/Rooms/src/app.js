@@ -55,23 +55,37 @@ const convertUrlType = (param, type) => {
  * HTTP Get method for list objects *
  ********************************/
 
-// app.get(path + hashKeyPath, function(req, res) {
-app.get(path, function(req, res) {
-  console.log('entering get');
+app.get(path + hashKeyPath, function(req, res) {
+// app.get(path + '/cheese', function(req, res) {
+  console.log(hashKeyPath);
+// app.get(path, function(req, res) {
+  console.log("GET: Entering GET");
   var condition = {}
   condition[partitionKeyName] = {
     ComparisonOperator: 'EQ'
   }
   
+  console.log('GET: Here is path ' + path);
   if (userIdPresent && req.apiGateway) {
-    console.log('Hello if');
-    res.json({klondike: 'bar1'});
+    // res.json({klondike: 'bar1'});
     condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
   } else {
     try {
-      console.log('Hello else');
-      res.json({klondike: 'bar2'});
+      // res.json({klondike: 'bar2'});
+      console.log("GET: Here is condition for: " + partitionKeyName.toString());
+      // req.params[partitionKeyName] = 18
+      // console.log("GET: Here is req " + req.toString());
+      // console.log("GET: Here is req.queryStringParameters " + req.queryStringParameters.toString());
+      // console.log(`GET: Req: ${JSON.stringify(req)}`);
+      console.log('GET: req is' + req);
+      // console.log("GET: Here is req.params: " + req.params[partitionKeyName]);
+      // console.log("GET: Here is condition for: " + AttributeValueList.toString());
+      // condition[partitionKeyName]['AttributeValueList'] = [ convertUrlType(req.query[partitionKeyName], partitionKeyType) ];
       condition[partitionKeyName]['AttributeValueList'] = [ convertUrlType(req.params[partitionKeyName], partitionKeyType) ];
+      console.log("GET: Here is the condition: " + condition[partitionKeyName]['AttributeValueList'].toString());
+
+      
+
     } catch(err) {
       res.statusCode = 500;
       res.json({error: 'Wrong column type ' + err});
@@ -88,6 +102,7 @@ app.get(path, function(req, res) {
       res.statusCode = 500;
       res.json({error: 'Could not load items: ' + err});
     } else {
+      console.log("GET: dynamodb.query else reached");
       res.json(data.Items);
     }
   });
@@ -98,6 +113,7 @@ app.get(path, function(req, res) {
  *****************************************/
 
 app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
+// app.get(path + hashKeyPath + sortKeyPath, function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
     params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
