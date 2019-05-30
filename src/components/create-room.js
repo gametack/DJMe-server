@@ -3,7 +3,9 @@ import { View } from 'react-native';
 import { Provider as PaperProvider, Button, Text, TextInput } from 'react-native-paper';
 import { styles, theme } from '../../global-styles'
 import { observer } from "mobx-react";
-import { API } from 'aws-amplify';
+import { API , Auth} from 'aws-amplify';
+
+const uuidv4 = require('uuid/v4'); //v4 of the UUID spec generates a UUID randomly (can't be reversed + unique)
 
 @observer export default class CreateRoom extends React.Component {
     constructor(props) {
@@ -11,20 +13,19 @@ import { API } from 'aws-amplify';
         this.state = {
             name: '',
         }
-    }
-
+    }      
 
     putRoom = async () => {
-        // let newRoom = {
-        //     id: Math.floor(Math.random() * 200),
-        //     name: this.state.name,
-        // }
+
+        const currentUser = await Auth.currentAuthenticatedUser({
+            bypassCache: false
+        })
 
         let newRoom = {
             body: {
-              "id" : 18,
-              "owner" : "Me",
-              "garbage": "I am not Garbo because I have confidence in myself"
+              "id" : Math.floor((Math.random() * 1000000) + 1),
+              "owner" : currentUser.username,
+              "roomName" : this.state.name
             }
         }
   
