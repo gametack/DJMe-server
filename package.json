@@ -1,15 +1,14 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "DJMe",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "eject": "expo eject"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
   },
   "dependencies": {
     "aws-amplify": "^1.1.26",
     "aws-amplify-react-native": "^2.1.10",
-    "expo": "^32.0.0",
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.4",
     "react": "16.5.0",
@@ -18,7 +17,14 @@
     "react-router-native": "^5.0.0"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
+    "@babel/core": "7.4.5",
+    "@babel/runtime": "7.4.5",
+    "babel-jest": "24.8.0",
+    "jest": "24.8.0",
+    "metro-react-native-babel-preset": "0.54.1",
+    "react-test-renderer": "16.8.3"
   },
-  "private": true
+  "jest": {
+    "preset": "react-native"
+  }
 }
