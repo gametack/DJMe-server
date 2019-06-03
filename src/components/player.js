@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-import { List, Text, IconButton, Card } from 'react-native-paper';
+import { Text} from 'react-native-paper';
 
 import { StyleSheet, View, Dimensions, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { observer } from 'mobx-react';
 
 const window = Dimensions.get('window');
 class Player extends Component {
@@ -19,7 +20,7 @@ class Player extends Component {
           <Text style={styles.headerText}>{'Room Player'}</Text>
         </View>
         <View style={styles.headerClose}>
-          <Icon style={styles.headerClose} name="arrow-drop-down" size={15} />
+          <Icon style={styles.headerClose} name="arrow-drop-down" size={15} onPress={() => this.props.history.goBack()}/>
         </View>
         <Image
           style={{ width: window.width - 30, height: 300 }}
@@ -39,7 +40,7 @@ class Player extends Component {
             onPress={() => this.provider.skipToPrevious()}/>
           </View>
           <View style={styles.play}>
-            <Icon name='play-arrow' onPress={() => this.provider.playing ? this.provider.pause() : this.provider.play()}
+            <Icon name={this.provider.playing ?'pause':'play-arrow'} onPress={() => this.provider.playing ? this.provider.pause() : this.provider.play()}
             size={70} />
           </View>
           <View style={styles.forward}>
@@ -106,4 +107,4 @@ const styles = StyleSheet.create({
     marginRight: 45,
   },
 });
-export default Player;
+export default observer(Player);
