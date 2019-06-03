@@ -36,5 +36,24 @@
                 }
             }
         }
+    },
+    "manny": {
+        "awscloudformation": {
+            "AuthRoleName": "djme-20190602201553-authRole",
+            "UnauthRoleArn": "arn:aws:iam::809327336756:role/djme-20190602201553-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::809327336756:role/djme-20190602201553-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "djme-20190602201553-deployment",
+            "UnauthRoleName": "djme-20190602201553-unauthRole",
+            "StackName": "djme-20190602201553",
+            "StackId": "arn:aws:cloudformation:us-east-1:809327336756:stack/djme-20190602201553/c1153f80-8594-11e9-aa16-0e984b426fca"
+        },
+        "categories": {
+            "auth": {
+                "cognito170d7462": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"test\",\"client_secret\":\"test\"},{\"ProviderName\":\"Google\",\"client_id\":\"test'\",\"client_secret\":\"test\"}]"
+                }
+            }
+        }
     }
 }

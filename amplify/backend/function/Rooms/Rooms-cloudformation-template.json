@@ -67,8 +67,8 @@
 				"Runtime": "nodejs8.10",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "djme-mark-20190430183031-deployment",
-					"S3Key": "amplify-builds/Rooms-1556668005-latest-build.zip"
+					"S3Bucket": "djme-20190602201553-deployment",
+					"S3Key": "amplify-builds/Rooms-1559522711-latest-build.zip"
 				}
 			}
 		},
