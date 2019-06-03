@@ -99,7 +99,9 @@ class Room extends Component {
             left={props => (<Avatar.Image {...props} size={50} source={{ uri: this.provider.nowPlaying.ImgUrl }} />)}
             right={props => <IconButton {...props} icon={this.provider.playing ? "pause" : "play-arrow"} onPress={() => this.provider.playing ? this.provider.pause() : this.provider.play()}
             />}
-            onPress= {() => history.push('/player')}
+            onPress= {
+              () => this.props.history.push('/player')
+            }
           />
         }
       </View>

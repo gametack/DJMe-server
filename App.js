@@ -7,6 +7,7 @@ import Home from "./src/components/home";
 import JoinRoom from './src/components/join-room'
 import CreateRoom from './src/components/create-room'
 import Room from './src/components/room'
+import Player from './src/components/player'
 import DataStore from './src/store/domain/DataStore'
 import PSpotify from "./src/provider/spotify/spotify"
 
@@ -39,6 +40,11 @@ class App extends React.Component {
                         exact
                         path="/room"
                         render={(props) => <Room {...props} provider={provider}/>}
+                    />
+                    <Route
+                        exact
+                        path="/player"
+                        render={(props) => <Player {...props} provider={provider}/>}
                     />
                 </Switch>
             </NativeRouter>
