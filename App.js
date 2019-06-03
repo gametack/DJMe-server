@@ -7,14 +7,12 @@ import Home from "./src/components/home";
 import JoinRoom from './src/components/join-room'
 import CreateRoom from './src/components/create-room'
 import DataStore from './src/store/domain/DataStore'
-import { observer } from "mobx-react";
-
 
 Amplify.configure(awsConfig);
 
 const DataState = new DataStore()
 
-@observer class App extends React.Component {
+class App extends React.Component {
     render() {
         return (
             <NativeRouter>
