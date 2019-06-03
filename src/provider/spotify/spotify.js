@@ -77,9 +77,9 @@ export default class PSpotify extends ProviderBase {
   login = () => Spotify.login();
   logout = () => Spotify.logout();
 
-  play = (uri) => {
+  play = (uri, index, pos) => {
     if (uri) {
-      Spotify.playURI(uri, 0, 0)
+      Spotify.playURI(uri, index, pos)
     }
     else {
       Spotify.setPlaying(true)

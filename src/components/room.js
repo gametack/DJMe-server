@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { BottomNavigation, Text, TouchableRipple } from 'react-native-paper';
 import Search from './search'
 import Playlist from './playlist'
 import Requests from './requests'
 import { observer } from 'mobx-react';
-import { List, Avatar, IconButton } from 'react-native-paper';
+import { BottomNavigation, List, Avatar, IconButton } from 'react-native-paper';
 
 
 import {
   StyleSheet,
   View,
+  BackHandler,
 } from "react-native";
 
 class Room extends Component {
@@ -70,10 +70,22 @@ class Room extends Component {
     });
   }
 
+  onGoBack = () =>{
+      this.props.history.goBack(); 
+    return true;
+  }
+
   componentDidMount() {
     //TODO utilize sharedpreferences find 
 
     this.initializeIfNeeded();
+    this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.onGoBack);
+  }
+
+  componentWillUnmount() {
+    if (this.backHandler) {
+      this.backHandler.remove();
+    }
   }
 
   render() {

@@ -7,7 +7,7 @@ import {
   View,
   ActivityIndicator,
   FlatList,
-  Text,
+  BackHandler,
   TouchableOpacity
 } from "react-native";
 
@@ -19,7 +19,9 @@ export default class PlayList extends PureComponent {
     this.state = {
       dataSource: [],
       search: "",
-      trackview: false
+      trackview: false,
+      playlistId: "",
+      playlistUri: ""
     };
   }
   isTrackView = false
@@ -40,14 +42,14 @@ export default class PlayList extends PureComponent {
 
   itemSelected = item => {
     if (!this.state.trackview) {
-      this.getPlaylistTracks(item.id)
+      this.getPlaylistTracks(item)
       this.setState({
         tracks: true
       })
       isTrackView = true
     }
     else {
-      this.provider.play(item.track.uri);
+      this.provider.play(this.state.playlistUri,item.track.track_number,0);
     }
   }
 
@@ -56,7 +58,7 @@ export default class PlayList extends PureComponent {
       data = await this.provider.getMyPlaylists();
       this.setState({
         dataSource: data.items,
-        tracks: false
+        trackview: false,
       })
     }
     catch (error) {
@@ -65,17 +67,27 @@ export default class PlayList extends PureComponent {
 
   }
 
-  getPlaylistTracks = async (id) => {
+  getPlaylistTracks = async (item) => {
     try {
-      data = await this.provider.getPlaylistTracks(id);
+      data = await this.provider.getPlaylistTracks(item.id);
       this.setState({
         dataSource: data.items,
-        trackview: true
+        trackview: true,
+        playlistId: item.id,
+        playlistUri: item.uri
       })
     }
     catch (error) {
       Alert.alert("Error", error.message);
     }
+  }
+
+  onGoBack = () =>{
+    if(this.state.trackview){
+      this.getMyPlaylists()
+      return true;
+    }
+    return false;
   }
 
   renderItem = item => {
@@ -124,20 +136,7 @@ export default class PlayList extends PureComponent {
   componentDidMount() {
     //TODO utilize sharedpreferences find 
     this.getMyPlaylists()
-    if (this.state.trackview) {
-      this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-        this.goBack(); // works best when the goBack is async
-        this.setState({
-          trackview: false
-        })
-        return true;
-      });
-    }
-    else {
-      if (this.backHandler) {
-        this.backHandler.remove();
-      }
-    }
+    this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.onGoBack);
   }
 
   componentWillUnmount() {
