@@ -2,9 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { Provider as PaperProvider, Button, Text, TextInput } from 'react-native-paper';
 import { styles, theme } from '../../global-styles'
-import { observer } from "mobx-react";
 
-@observer export default class CreateRoom extends React.Component {
+export default class CreateRoom extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

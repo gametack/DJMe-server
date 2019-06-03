@@ -1,19 +1,24 @@
-import { observable, action, computed } from 'mobx'
+import { observable, action, decorate } from 'mobx'
 
 
-export default class DataStore {
+class DataStore {
     constructor() {
         console.log('Data store has been initialized')
     }
 
-    @observable rooms = [
+    rooms = [
         {
             id: 1,
             name: 'First Room'
         }
     ]
 
-    @action addRoom = (room) => {
+    addRoom = (room) => {
         this.rooms.push(room)
     }
 }
+decorate(DataStore, {
+    rooms: observable,
+    addRoom: action,
+})
+export default DataStore
