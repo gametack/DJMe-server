@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import PSpotify from "../provider/spotify/spotify"
 import { List, Avatar } from 'react-native-paper';
 
 import {
@@ -16,13 +15,13 @@ export default class PlayList extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.provider = props.provider
     this.state = {
       dataSource: [],
       search: "",
       trackview: false
     };
   }
-  provider = new PSpotify()
   isTrackView = false
 
   async providerSearch(query) {
@@ -124,7 +123,6 @@ export default class PlayList extends PureComponent {
 
   componentDidMount() {
     //TODO utilize sharedpreferences find 
-    this.provider = new PSpotify()
     this.getMyPlaylists()
     if (this.state.trackview) {
       this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {

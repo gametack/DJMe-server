@@ -8,10 +8,12 @@ import JoinRoom from './src/components/join-room'
 import CreateRoom from './src/components/create-room'
 import Room from './src/components/room'
 import DataStore from './src/store/domain/DataStore'
+import PSpotify from "./src/provider/spotify/spotify"
 
 Amplify.configure(awsConfig);
 
 const DataState = new DataStore()
+const provider = new PSpotify();
 
 class App extends React.Component {
     render() {
@@ -36,7 +38,7 @@ class App extends React.Component {
                     <Route
                         exact
                         path="/room"
-                        render={(props) => <Room {...props}/>}
+                        render={(props) => <Room {...props} provider={provider}/>}
                     />
                 </Switch>
             </NativeRouter>

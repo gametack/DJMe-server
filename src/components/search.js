@@ -16,13 +16,13 @@ import {
 export default class Search extends PureComponent {
   constructor(props) {
     super(props);
+    this.provider = props.provider
 
     this.state = {
       dataSource: [],
       search: ""
     };
   }
-  provider = new PSpotify()
 
 
   providerSearch = async () => {

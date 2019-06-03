@@ -3,7 +3,6 @@ import { BottomNavigation, Text, TouchableRipple } from 'react-native-paper';
 import Search from './search'
 import Playlist from './playlist'
 import Requests from './requests'
-import PSpotify from "../provider/spotify/spotify"
 import { observer } from 'mobx-react';
 import { List, Avatar, IconButton } from 'react-native-paper';
 
@@ -16,6 +15,7 @@ import {
 class Room extends Component {
   constructor(props) {
     super(props);
+    this.provider = props.provider
   }
   state = {
     providerInitialized: false,
@@ -27,14 +27,13 @@ class Room extends Component {
       { key: 'search', title: 'Search', icon: 'search' },
     ],
   };
-  provider = new PSpotify();
 
   _handleIndexChange = index => this.setState({ index });
 
   _renderScene = BottomNavigation.SceneMap({
-    playlist: Playlist,
+    playlist: props => <Playlist {...props} provider={this.provider} />,
     requests: Requests,
-    search: Search,
+    search: props => <Search {...props} provider={this.provider} />
   });
 
   async initializeIfNeeded() {
