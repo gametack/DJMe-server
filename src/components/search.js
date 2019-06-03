@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import PSpotify from "../provider/spotify/spotify"
 import { Searchbar } from "react-native-paper";
-import { ListItem } from 'react-native-elements'
+import { List, Avatar } from 'react-native-paper';
 
 import {
   Alert,
@@ -62,11 +62,11 @@ export default class Search extends PureComponent {
         style={styles.list}
         onPress={() => this.itemSelected(item)}
       >
-        <ListItem
-         containerStyle={{ borderBottomColor: 'red' }}
+        <List.Item
+        //  containerStyle={{ borderBottomColor: 'red' }}
           title={name}
-          subtitle={subtext}
-          leftAvatar={{ source: { uri: imgurl } }}
+          description={subtext}
+          left = { props => ( <Avatar.Image {...props} size={50} source={{ uri: imgurl }} /> )}
         />
       </TouchableOpacity>
     );

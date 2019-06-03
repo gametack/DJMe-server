@@ -5,7 +5,7 @@ import Playlist from './playlist'
 import Requests from './requests'
 import PSpotify from "../provider/spotify/spotify"
 import { observer } from 'mobx-react';
-import { ListItem } from 'react-native-elements'
+import { List, Avatar, IconButton } from 'react-native-paper';
 
 
 import {
@@ -39,9 +39,7 @@ class Room extends Component {
 
   async initializeIfNeeded() {
     if (!(await this.provider.isinitialized())) {
-      if (!(await this.provider.initialize())) {
-        return;
-      }
+      await this.provider.initialize()
     }
 
     this.setState({
@@ -75,6 +73,7 @@ class Room extends Component {
 
   componentDidMount() {
     //TODO utilize sharedpreferences find 
+
     this.initializeIfNeeded();
   }
 
@@ -94,12 +93,14 @@ class Room extends Component {
           renderScene={this._renderScene}
         />
         {this.provider.active &&
-          <ListItem
-            containerStyle={{ borderBottomColor: 'red' }}
+          <List.Item
+            // containerStyle={{ borderBottomColor: 'red' }}
             title={this.provider.nowPlaying.Title}
-            subtitle={this.provider.nowPlaying.SubTitle}
-            leftAvatar={{ source: { uri: this.provider.nowPlaying.ImgUrl } }}
-            rightIcon={{ name: this.provider.playing ? "pause" : "play-arrow", onPress: () => this.provider.playing ? this.provider.pause() : this.provider.play() }}
+            description={this.provider.nowPlaying.SubTitle}
+            left={props => (<Avatar.Image {...props} size={50} source={{ uri: this.provider.nowPlaying.ImgUrl }} />)}
+            right={props => <IconButton {...props} icon={this.provider.playing ? "pause" : "play-arrow"} onPress={() => this.provider.playing ? this.provider.pause() : this.provider.play()}
+            />}
+            onPress= {() => history.push('/player')}
           />
         }
       </View>

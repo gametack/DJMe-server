@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import PSpotify from "../provider/spotify/spotify"
-import { ListItem } from 'react-native-elements'
+import { List, Avatar } from 'react-native-paper';
 
 import {
   Alert,
@@ -80,32 +80,32 @@ export default class PlayList extends PureComponent {
   }
 
   renderItem = item => {
-    let name = this.state.trackview?item.track.name:item.name
+    let name = this.state.trackview ? item.track.name : item.name
     let subtext = ""
-    if(this.state.trackview){
-      let artistname =  item.track.artists.map(artist => artist.name).join(", ");
+    if (this.state.trackview) {
+      let artistname = item.track.artists.map(artist => artist.name).join(", ");
       //todo may need to optimize here to get lower resolution image since we're displaying smaller images
       subtext = artistname + " * " + item.track.album.name
-      if(item.track.album.images.length > 0){
+      if (item.track.album.images.length > 0) {
         imgurl = item.track.album.images[0].url
       }
     }
-    else{
+    else {
       subtext = item.tracks.total.toString() + " tracks"
-      if(item.images.length > 0){
+      if (item.images.length > 0) {
         imgurl = item.images[0].url
       }
     }
-    return(
+    return (
       <TouchableOpacity
         style={styles.list}
         onPress={() => this.itemSelected(item)}
       >
-        <ListItem
-         containerStyle={{ borderBottomColor: 'red' }}
+        <List.Item
+          //  containerStyle={{ borderBottomColor: 'red' }}
           title={name}
-          subtitle={subtext}
-          leftAvatar={{ source: { uri: imgurl } }}
+          description={subtext}
+          left = { props => ( <Avatar.Image {...props} size={50} source={{ uri: imgurl }} /> )}
         />
       </TouchableOpacity>
     );
@@ -160,8 +160,8 @@ export default class PlayList extends PureComponent {
         <FlatList
           data={this.state.dataSource}
           ItemSeparatorComponent={this.FlatListItemSeparator}
-          renderItem={item => this.renderItem(item.item)}          
-          keyExtractor={item => item.id}
+          renderItem={item => this.renderItem(item.item)}
+          keyExtractor={item => this.state.trackview ? item.track.id:item.id}
         />
       </View>
     );
