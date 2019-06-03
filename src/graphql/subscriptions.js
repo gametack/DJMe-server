@@ -25,3 +25,36 @@ export const onDeleteRoom = `subscription OnDeleteRoom {
   }
 }
 `;
+export const onCreateRequests = `subscription OnCreateRequests {
+  onCreateRequests {
+    id
+    songname
+    songartist
+    provider
+    providerid
+    likes
+  }
+}
+`;
+export const onUpdateRequests = `subscription OnUpdateRequests {
+  onUpdateRequests {
+    id
+    songname
+    songartist
+    provider
+    providerid
+    likes
+  }
+}
+`;
+export const onDeleteRequests = `subscription OnDeleteRequests {
+  onDeleteRequests {
+    id
+    songname
+    songartist
+    provider
+    providerid
+    likes
+  }
+}
+`;

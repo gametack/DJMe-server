@@ -3,3 +3,11 @@ type Room @model {
   name: String!
   description: String
 }
+type Requests @model {
+  id: ID!
+  songname: String!
+  songartist: String!
+  provider: String!
+  providerid: String!
+  likes: String
+}

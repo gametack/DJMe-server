@@ -24,3 +24,32 @@ export const listRooms = `query ListRooms(
   }
 }
 `;
+export const getRequests = `query GetRequests($id: ID!) {
+  getRequests(id: $id) {
+    id
+    songname
+    songartist
+    provider
+    providerid
+    likes
+  }
+}
+`;
+export const listRequestss = `query ListRequestss(
+  $filter: ModelRequestsFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listRequestss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      songname
+      songartist
+      provider
+      providerid
+      likes
+    }
+    nextToken
+  }
+}
+`;

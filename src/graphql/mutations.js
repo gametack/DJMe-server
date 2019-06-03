@@ -25,3 +25,36 @@ export const deleteRoom = `mutation DeleteRoom($input: DeleteRoomInput!) {
   }
 }
 `;
+export const createRequests = `mutation CreateRequests($input: CreateRequestsInput!) {
+  createRequests(input: $input) {
+    id
+    songname
+    songartist
+    provider
+    providerid
+    likes
+  }
+}
+`;
+export const updateRequests = `mutation UpdateRequests($input: UpdateRequestsInput!) {
+  updateRequests(input: $input) {
+    id
+    songname
+    songartist
+    provider
+    providerid
+    likes
+  }
+}
+`;
+export const deleteRequests = `mutation DeleteRequests($input: DeleteRequestsInput!) {
+  deleteRequests(input: $input) {
+    id
+    songname
+    songartist
+    provider
+    providerid
+    likes
+  }
+}
+`;
