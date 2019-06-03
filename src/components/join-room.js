@@ -17,7 +17,7 @@ export default ({ history, currentRooms }) => (
             <Divider style={{ marginTop: 100 }} />
             {currentRooms.map((room, index) => {
                 return (
-                    <Button key={index} style={{ width: '50%', marginBottom: '5%' }} mode="contained" onPress={() => { console.log(`Call join function with room id: ${room.id}`) }}>
+                    <Button key={index} style={{ width: '50%', marginBottom: '5%' }} mode="contained" onPress={() => { history.push('/room') }}>
                         <Text style={{ fontSize: 24, color: '#000000' }}>{room.name}</Text>
                     </Button>
                 )
