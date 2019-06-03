@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { BottomNavigation, Text, TouchableRipple } from 'react-native-paper';
 import Search from './search'
 import Playlist from './playlist'
 import Requests from './requests'
 import { observer } from 'mobx-react';
-import { List, Avatar, IconButton } from 'react-native-paper';
+import { BottomNavigation, List, Avatar, IconButton } from 'react-native-paper';
 
 
 import {
   StyleSheet,
   View,
+  BackHandler,
 } from "react-native";
 
 class Room extends Component {
@@ -70,10 +70,22 @@ class Room extends Component {
     });
   }
 
+  onGoBack = () =>{
+      this.props.history.goBack(); 
+    return true;
+  }
+
   componentDidMount() {
     //TODO utilize sharedpreferences find 
 
     this.initializeIfNeeded();
+    this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.onGoBack);
+  }
+
+  componentWillUnmount() {
+    if (this.backHandler) {
+      this.backHandler.remove();
+    }
   }
 
   render() {
@@ -99,7 +111,9 @@ class Room extends Component {
             left={props => (<Avatar.Image {...props} size={50} source={{ uri: this.provider.nowPlaying.ImgUrl }} />)}
             right={props => <IconButton {...props} icon={this.provider.playing ? "pause" : "play-arrow"} onPress={() => this.provider.playing ? this.provider.pause() : this.provider.play()}
             />}
-            onPress= {() => history.push('/player')}
+            onPress= {
+              () => this.props.history.push('/player')
+            }
           />
         }
       </View>
