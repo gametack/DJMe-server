@@ -6,6 +6,29 @@ export const onCreateRoom = `subscription OnCreateRoom {
     id
     name
     description
+    userid
+    people {
+      users {
+        id
+        cognitoId
+        username
+      }
+      nextToken
+    }
+    requests {
+      requests {
+        id
+        roomid
+        userid
+        songname
+        songartist
+        provider
+        providerid
+        likes
+        status
+      }
+      nextToken
+    }
   }
 }
 `;
@@ -14,6 +37,29 @@ export const onUpdateRoom = `subscription OnUpdateRoom {
     id
     name
     description
+    userid
+    people {
+      users {
+        id
+        cognitoId
+        username
+      }
+      nextToken
+    }
+    requests {
+      requests {
+        id
+        roomid
+        userid
+        songname
+        songartist
+        provider
+        providerid
+        likes
+        status
+      }
+      nextToken
+    }
   }
 }
 `;
@@ -22,39 +68,119 @@ export const onDeleteRoom = `subscription OnDeleteRoom {
     id
     name
     description
+    userid
+    people {
+      users {
+        id
+        cognitoId
+        username
+      }
+      nextToken
+    }
+    requests {
+      requests {
+        id
+        roomid
+        userid
+        songname
+        songartist
+        provider
+        providerid
+        likes
+        status
+      }
+      nextToken
+    }
   }
 }
 `;
-export const onCreateRequests = `subscription OnCreateRequests {
-  onCreateRequests {
+export const onCreateRequest = `subscription OnCreateRequest {
+  onCreateRequest {
     id
+    roomid
+    userid
     songname
     songartist
     provider
     providerid
     likes
+    status
   }
 }
 `;
-export const onUpdateRequests = `subscription OnUpdateRequests {
-  onUpdateRequests {
+export const onUpdateRequest = `subscription OnUpdateRequest {
+  onUpdateRequest {
     id
+    roomid
+    userid
     songname
     songartist
     provider
     providerid
     likes
+    status
   }
 }
 `;
-export const onDeleteRequests = `subscription OnDeleteRequests {
-  onDeleteRequests {
+export const onDeleteRequest = `subscription OnDeleteRequest {
+  onDeleteRequest {
     id
+    roomid
+    userid
     songname
     songartist
     provider
     providerid
     likes
+    status
+  }
+}
+`;
+export const onCreateUser = `subscription OnCreateUser {
+  onCreateUser {
+    id
+    cognitoId
+    username
+    friends {
+      users {
+        id
+        cognitoId
+        username
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const onUpdateUser = `subscription OnUpdateUser {
+  onUpdateUser {
+    id
+    cognitoId
+    username
+    friends {
+      users {
+        id
+        cognitoId
+        username
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const onDeleteUser = `subscription OnDeleteUser {
+  onDeleteUser {
+    id
+    cognitoId
+    username
+    friends {
+      users {
+        id
+        cognitoId
+        username
+      }
+      nextToken
+    }
   }
 }
 `;

@@ -1,13 +1,48 @@
+
+type Query {
+    getRequests(limit: Int, nextToken: String): RequestConnection
+    getUserRequests(userid: ID!, limit: Int, nextToken: String): RequestConnection
+    getRoomRequests(roomid: ID!, limit: Int, nextToken: String): RequestConnection
+    
+    getUsers(limit: Int, nextToken: String): UserConnection
+}
+
 type Room @model {
   id: ID!
   name: String!
   description: String
+  userid: ID!
+  people(after: String, first: Int): UserConnection
+  requests(after: String, first: Int): RequestConnection
 }
-type Requests @model {
+type Request @model {
   id: ID!
+  roomid: ID!
+  userid: ID!
   songname: String!
   songartist: String!
   provider: String!
   providerid: String!
   likes: String
+  status: RequestStatus
+}
+
+type RequestConnection {
+  requests: [Request]
+  nextToken: String
+}
+enum RequestStatus {
+    requested
+    played
+    rejected
+}
+type User @model {
+  id: ID!
+  cognitoId: ID!
+  username: String!
+  friends(after: String, first: Int): UserConnection
+}
+type UserConnection {
+  users: [User]
+  nextToken: String
 }
